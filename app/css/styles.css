@@ -52,6 +52,7 @@
 	position: fixed;
 	top: 0px;
 	width: 100%;
+	z-index: 99;
 }
 
 .branding-logo {
@@ -118,6 +119,15 @@ p#holdings-data {
 	margin-bottom: auto;
 	/*/display: block;/*/
     line-height: 200px;
+}
+
+.refresh-button{
+	background: #2196f3;
+	color: white;
+	height: 40px;
+    width: 80px;
+    border-radius: 15%;
+    border-color: #2196f3;
 }
 
 .financials {
