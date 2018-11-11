@@ -151,12 +151,14 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 					return `
 						<div id="accounts${user.accountType}" class="accounts" data-name="${user.accountType}">
 							<section class="account-balance" data-name="${user.accountType}">
+								<h2 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h2>
 								<h1 data-name="${user.accountType}"><strong data-name="${user.accountType}">Account Name</strong></h1>
-								<h1 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h1>
 							</section>
 							<span id="account-holdings-data" data-name="${user.accountType}">
 								${new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(user.accountHoldings)}
+
 							</span>
+							
 						</div>
 						
 
@@ -240,8 +242,9 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 					return `
 						<div id="accounts${user.accountType}" class="accounts" data-name="${user.accountType}">
 							<section class="account-balance" data-name="${user.accountType}">
+								
+								<h2 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h2>
 								<h1 data-name="${user.accountType}"><strong data-name="${user.accountType}">Account Name</strong></h1>
-								<h1 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h1>
 							</section>
 							<span id="account-holdings-data" data-name="${user.accountType}">
 								${new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(user.accountHoldings)}

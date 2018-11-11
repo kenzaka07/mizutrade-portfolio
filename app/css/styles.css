@@ -166,7 +166,7 @@ header {
 
 .title{
 	margin-top: 90px;
-	color: #a3aab0;
+	color: #a3aab0 ;
 }
 
 .section-title{
@@ -206,6 +206,9 @@ header {
 	max-height: 300px;
 	padding: 20px 20px;
 	margin-bottom: 20px;
+	border-left-width: 5px;
+    border-left-color: #2196f3;
+    border-left-style: solid;
 }
 
 
@@ -215,6 +218,14 @@ header {
 }
 
 .account-balance h1{
+	font-size: 14px;
+	font-weight:lighter;
+	padding-left: 20px;
+	text-align: left;
+	color:	#a3aab0;
+}
+
+.account-balance h2{
 	font-size: 14px;
 	font-weight:lighter;
 	padding-left: 20px;
@@ -285,12 +296,6 @@ button.selected {
 	border-color: #2d3436;
 }/*/
 
-
-.financials {
-
-	margin-top: 20px;
-	
-}
 
 
 footer {
