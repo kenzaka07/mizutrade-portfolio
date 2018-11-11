@@ -101,7 +101,18 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 	//let googleUserName = $("#lname").val();
 	
 	
-//READ JSON data
+
+	
+	
+	
+
+  
+ 
+	
+	
+	let googleUserName = "Tagli" //$("#lname").val();
+	
+//READ JSON data ON LOAD
   
 	function read_value() {
 
@@ -110,159 +121,155 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 		document.getElementById("loader").style.visibility = "visible";
 		var url = script_url+"?action=read";
 		
-		let googleUserName = "Tagli" //$("#lname").val();
+		
 
 		$.getJSON(url, function (json) {
 		
-			let appUser = json.records.filter(filterName)
+			let appUser = json.records.filter(filterName);
 			
 			function filterName(x){
-			  return x.lastNAME == googleUserName
+			  return x.lastName == googleUserName
 			}
 
-			//function onlyAccount(x){
-			//  return x.ACCOUNT == "Mizutrade"
-			//}
 			
-		
-			document.getElementById("welcome-user-data").innerHTML = appUser[0].firstNAME;
-			document.getElementById("holdings-data").innerHTML = new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(appUser[0].HOLDINGS);
+			if (appUser[0].firstName != "") {
+				document.getElementById("welcome-user-data").innerHTML = appUser[0].firstName;
+			}else if (appUser[0].lastName != "") {
+				document.getElementById("welcome-user-data").innerHTML = appUser[0].lastName;
+			}else {
+				document.write("Error: No User in the database");
+			};
 
 			
-			console.log(json.records)
-			console.log(appUser[0])
+			
+	
+			//Account Name Template
 		
+			document.getElementById('main').innerHTML = `
 		
-		
-		
-			//for (var i = 0; i < json.records.length; i++) {
-		
-			//var one = i
-			//var jsondata = json.records[one];
-		
-			//console.log(jsondata);
-		
-			//		document.getElementById("demo").innerHTML = json.records[one].ID;
-					//document.getElementById("demo1").innerHTML = json.records[one].NAME;
-					//document.getElementById("demo2").innerHTML = json.records[one].SEX;
-		
-			//document.getElementById("demo").innerHTML = jsondata.NAME + ", " + jsondata.SEX;
-			//}
-		// Set the variables from the results array
-	   
-	   
-	  
+				${appUser.map(function(user) {
+					return `
+						<div id="accounts${user.accountType}" class="accounts" data-name="${user.accountType}">
+							<section class="account-balance" data-name="${user.accountType}">
+								<h1 data-name="${user.accountType}"><strong data-name="${user.accountType}">Account Name</strong></h1>
+								<h1 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h1>
+							</section>
+							<span id="account-holdings-data" data-name="${user.accountType}">
+								${new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(user.accountHoldings)}
+							</span>
+						</div>
+						
 
-			// CREATE DYNAMIC TABLE.
-			//var table = document.createElement("table");
 
-			
-
-			//var header = table.createTHead();
-			//var row = header.insertRow(0);     
-			//var cell1 = row.insertCell(0);
-			//var cell2 = row.insertCell(1);
-			//var cell3 = row.insertCell(2);
-			//var cell4 = row.insertCell(3);
-			//var cell4 = row.insertCell(4);
-		
-			//cell1.innerHTML = "<b>ID</b>";
-			//cell2.innerHTML = "<b>FirstName</b>";
-			//cell3.innerHTML = "<b>LastName</b>";
-			//cell4.innerHTML = "<b>Sex</b>";
-			//cell4.innerHTML = "<b>Holdings</b>";
-			
-			
-			// ADD JSON DATA TO THE TABLE AS ROWS.
-			//for (var i = 0; i < json.records.length; i++) {
-			
-				//tr = table.insertRow(-1);
-					//var tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].ID;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].firstNAME;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].lastNAME;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].SEX;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(json.records[i].HOLDINGS);
-				//}
+						
+					`
+					
+					
+				}).join('')}			
 				
-				
+			`
+			
+	
+				var accounts = document.querySelector(".main");
 
-			// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-			//var divContainer = document.getElementById("showData");
-			//divContainer.innerHTML = "";
-			//divContainer.appendChild(table);
+				accounts.addEventListener("click", function(e){
+
+				let viewAccountType = e.target.dataset.name
+				console.log(viewAccountType);
+				
+				//alert("Account Name: " + e.target.dataset.name);
+				
+				});
+			
+			
+			
+
+
+			
+			//LOADER 	
+
 			document.getElementById("loader").style.visibility = "hidden";
 			$("#re").css("visibility","visible");
 			
+		});
+		
+	};
+	
+	
+	window.addEventListener('load', read_value);
+	
+
+//REFRESH VALUES	
+	
+	
+	function refresh_value() {
+
+		$("#re").css("visibility","hidden");
+	   
+		document.getElementById("loader").style.visibility = "visible";
+		var url = script_url+"?action=read";
+		
+		
+
+		$.getJSON(url, function (json) {
+		
+			let appUser = json.records.filter(filterName);
+			
+			function filterName(x){
+			  return x.lastName == googleUserName
+			}
+
+			
+			if (appUser[0].firstName != "") {
+				document.getElementById("welcome-user-data").innerHTML = appUser[0].firstName;
+			}else if (appUser[0].lastName != "") {
+				document.getElementById("welcome-user-data").innerHTML = appUser[0].lastName;
+			}else {
+				document.write("Error: No User in the database");
+			};
+
+			
+			
+			
+	
+			//Account Name Template
+		
+			document.getElementById('main').innerHTML = `
+		
+				${appUser.map(function(user) {
+					return `
+						<div id="accounts${user.accountType}" class="accounts" data-name="${user.accountType}">
+							<section class="account-balance" data-name="${user.accountType}">
+								<h1 data-name="${user.accountType}"><strong data-name="${user.accountType}">Account Name</strong></h1>
+								<h1 id="accountname" class="accountname" data-name="${user.accountType}">${user.accountType}</h1>
+							</section>
+							<span id="account-holdings-data" data-name="${user.accountType}">
+								${new Intl.NumberFormat('en-CA', {style: 'currency' , currency: 'PHP', useGrouping: true}).format(user.accountHoldings)}
+							</span>
+						</div>
+						
+
+
+						
+					`
+					
+					
+				}).join('')}			
+				
+			`
+			
+	
+
+			
+
+
+			
+			//LOADER 	
+			
+			document.getElementById("loader").style.visibility = "hidden";
+			//$("#re").css("visibility","visible");
 			
 		});
 		
-		//$("#re").css("visibility","hidden");
-	   
-		//document.getElementById("loader").style.visibility = "visible";
-		//var url = script_url+"?action=read";
-
-		//$.getJSON(url, function (json) {
-
-		// Set the variables from the results array
-	   
-	   
-	  
-
-			// CREATE DYNAMIC TABLE.
-			//var table = document.createElement("table");
-
-			
-
-			//var header = table.createTHead();
-			//var row = header.insertRow(0);     
-			//var cell1 = row.insertCell(0);
-			//var cell2 = row.insertCell(1);
-			//var cell3 = row.insertCell(2);
-			//var cell4 = row.insertCell(3);
-		
-			//cell1.innerHTML = "<b>ID</b>";
-			//cell2.innerHTML = "<b>FirstName</b>";
-			//cell3.innerHTML = "<b>LastName</b>";
-			//cell4.innerHTML = "<b>Sex</b>";
-			
-			// ADD JSON DATA TO THE TABLE AS ROWS.
-			//for (var i = 0; i < json.records.length; i++) {
-
-				//tr = table.insertRow(-1);
-					//var tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].ID;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].firstNAME;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].lastNAME;
-					//tabCell = tr.insertCell(-1);
-					//tabCell.innerHTML = json.records[i].SEX;
-				//}
-		  
-
-			// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-			//var divContainer = document.getElementById("showData1");
-			//divContainer.innerHTML = "";
-			//divContainer.appendChild(table);
-			//document.getElementById("loader").style.visibility = "hidden";
-			//$("#re").css("visibility","visible");
-			
-			
-		
-		//});
-	}
-	
-	
-
-window.addEventListener('load', read_value)
-	
-	
-	
-	
-	
+	};
 	

@@ -2,6 +2,8 @@
 <html>    
 
 <head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Mizutrade: Porfolio </title>
 <link rel="stylesheet" href="css/styles.css?v=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -10,11 +12,11 @@
 
 </head>
 
-<body class="body">
-	<header class="header">
+<body>
+	<header>
 		<section class="branding-logo">
 			<a href="/index.html" aria-label="Go to homepage">
-				<img src="images/logo-mizutrade.svg" height="50px" width="auto"/>
+				<img src="images/logo-mizutrade.svg" alt="Mizufolio" height="40px" width="auto"/>
 			</a>
 		</section>
 		<section class ="right-header">
@@ -26,83 +28,66 @@
 			<div>
 		</section>
 	</header>
-
-	<main class="main">
 	
-		<div class="holdings">
+	<div class="title">
+		<section class="section-title"><h1> Account Summary</h1></section>
+		<input class="refresh-button" type="button" onclick="refresh_value()" value="↻" />
+	</div>
+
+	<main id="main" class="main">
+	
+		<!--<div id="accountMizutrade" class="accounts">
 			<section class="account-balance">
-				<h1 style="font-size: 14px;font-weight: lighter;padding-left: 20px;">Account Balance</h1>
+				<h1 id="accountname">Mizutrade</h1>
 			</section>
-			<p id="holdings-data"></p>
-		</div>
-		<div class="financials" align="center">
-			<!--<h1>CRUD OPERATION ON GOOGLE SPREAD SHEET, WEB APPLICATION USING GOOGLE APP SCRIPT .</h1> 
-			<p>This is simple application, You can develop your own logic based on your requiremnets.<p>
-			<p>Be careful with the parameters you are sending, it should match the parameters that are recived in google app script.</p>-->
-	
+			<span id="account-holdings-data"></span>
+		</div>-->
 		
-			<form >
-			
-	<!--			Lastname
-				<input type = "text" name ="lname" id="lname">-->
-			
-			<!--	ID
-				<input type = "text" name ="id" id="id">
-				Firstname
-				<input type = "text" name ="fname" id="fname">-->
+		
+		
+		<!--<div id="accountLightchain" class="accounts">
+			<section class="account-balance">
+				<h1 id="accountname">Lightchain Capital</h1>
+			</section>
+			<span id="account-holdings-data2"></span>
+		</div>-->
+		
+		
+		<!--<div id="accounts" class="accounts">
+			<section class="account-balance">
+				<h1 id="accountname">Lightchain Capital</h1>
+			</section>
+			<p id="account-holdings-data"></p>
+		</div>	-->
+		
 
-			<!--	Sex
-				<input type = "text" name ="sex" id="sex">
-				Holdings
-				<input type = "text" name ="holdings" id="holdings">-->
-
-			</form>
-			
-
-			
+		
+		
+		
+	</main>
+	
+	<div class="financials" align="center">
 			
 
 			<p id="re"></p>
 
-			
-			<input class="refresh-button" type="button" onclick="read_value()" value="Refresh" />
-			
-			<!--<input type="button"  id = "b1" onClick="insert_value()" value = "Insert"></input>
-			<input type="button" onclick="read_value()" value="Read" />
-			<input type="button" onclick="update_value()" value="Update" />
-			<input type="button" onclick="delete_value()" value="Delete" />
-			<a href="https://docs.google.com/spreadsheets/d/1fqTnrSRZyc9HWIr2EqqFy4Re9MuL0u_4QvvkozBfIeU/edit?usp=sharing" target="_blank">Click here to open Spread Sheet </a>
 
-			
-			
-			
-			<div id="showData"></div>
-			<div>
-				<p id="demo"></p>
-				<p id="demo1"></p>
-				<p id="demo2"></p>
-			</div>
-
-
-			<div class="design" id="showData1"></div>-->
-			
-			<div>
-				</br>
-				</br>
-				</br>
-				<div id="loader"></div>
-			</div>
-			
-		</div>
-	</main>
 	
-	<footer class="footer">
+		<div id="loader" class="loader">
+			<svg viewBox="0 0 32 32" width="32" height="32">
+				<circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+			</svg>
+		</div>
+	</div>
+	
+	
+	<footer>
 		<section class="footer-branding-logo">
 			<!--<a href="/" aria-label="Go to homepage">
 				<img src="images/logo-mizutrade.svg" height="50px" width="auto"/>
 			</a>-->
 			<div align="center">
-				<p>© 20118 Mizutrade Digital Assets Holdings | All Rights Reserved.</p>
+				<span class="footer">© 2018 Mizutrade Digital Ventures | All Rights Reserved.</span>
 			</div>
 		</section>
 		
