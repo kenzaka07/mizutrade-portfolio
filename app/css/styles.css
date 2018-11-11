@@ -321,3 +321,18 @@ span.footer {
     margin-right: 20px;
 }
 
+
+
+@media screen and (max-width: 600px) {
+	span.footer {
+		line-height: 50px;
+		margin-right: unset;
+	}
+
+	.footer-branding-logo {
+		height: 50px;
+		float: none;	
+	}
+}
+
+
