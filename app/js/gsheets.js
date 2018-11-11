@@ -204,7 +204,7 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 	
 	function refresh_value() {
 
-		$("#re").css("visibility","hidden");
+		//$("#re").css("visibility","hidden");
 	   
 		document.getElementById("loader").style.visibility = "visible";
 		var url = script_url+"?action=read";
