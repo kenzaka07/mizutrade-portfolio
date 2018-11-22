@@ -41,12 +41,13 @@
 
 
 .loader {
-  left: 50%;
-  top: 50%;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-  .loader #spinner {
+	left: 50%;
+	top: 50%;
+	position: fixed;
+	-webkit-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%); }
+
+.loader #spinner {
     box-sizing: border-box;
     stroke: #673AB7;
     stroke-width: 3px;

@@ -114,7 +114,7 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
   
 	function read_value() {
 
-		$("#re").css("visibility","hidden");
+		//$("#re").css("visibility","hidden");
 	   
 		document.getElementById("loader").style.visibility = "visible";
 		var url = script_url+"?action=read";
@@ -193,16 +193,20 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 			//LOADER 	
 
 			document.getElementById("loader").style.visibility = "hidden";
-			$("#re").css("visibility","visible");
+			//$("#re").css("visibility","visible");
 			
 		});
 		
 	};
 	
+	function hide_loader(){
+		document.getElementById("loader").style.visibility = "hidden";
+	}
 	
 	//window.addEventListener('load', read_value);
+	window.addEventListener('load', hide_loader);
 	window.addEventListener('load', localStorage.clear());
-	
+
 	
 //REFRESH VALUES	
 	
