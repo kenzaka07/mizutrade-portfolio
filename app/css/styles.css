@@ -276,6 +276,46 @@ p#account-holdings-data {
 	border-color: #b2bec3;
 }
 
+
+.verify-button{
+	background: #232323/*/#2196f3;/*/;
+	color: white;
+	font-size: 14px;
+	height: 40px;
+    max-width: 304px;
+    min-width: 200px;
+    width: 100%;
+    border-radius: 0%;
+    border-color: #2196f3;
+	border-style: none;
+	outline: none;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 4px;
+}
+
+.verify-button:hover {
+	background: #07c;
+	color: white;
+    border-color: #07c;
+	cursor: grab;
+	
+}
+
+
+.verify-button:selected {
+	background: red; 	
+	border-color: #b2bec3;
+}
+
+.verify-textbox{
+	height: 30px;
+    max-width: 300px;
+    min-width: 200px;
+    width: 100%;
+}
+
+
 button	{
 	
 }

@@ -107,11 +107,9 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 	
 
   
- 
 	
 	
-	let googleUserName = "Tagli" //$("#lname").val();
-	
+
 //READ JSON data ON LOAD
   
 	function read_value() {
@@ -121,9 +119,13 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 		document.getElementById("loader").style.visibility = "visible";
 		var url = script_url+"?action=read";
 		
+		let googleUserName = $("#lname").val();
 		
+		localStorage.setItem("lname", googleUserName);
 
 		$.getJSON(url, function (json) {
+			
+			console.log(googleUserName);
 		
 			let appUser = json.records.filter(filterName);
 			
@@ -198,18 +200,21 @@ var script_url = "https://script.google.com/macros/s/AKfycbwxzd2giabGF2s0vLhAsHf
 	};
 	
 	
-	window.addEventListener('load', read_value);
+	//window.addEventListener('load', read_value);
+	window.addEventListener('load', localStorage.clear());
 	
-
+	
 //REFRESH VALUES	
 	
 	
 	function refresh_value() {
 
 		//$("#re").css("visibility","hidden");
-	   
+		let googleUserName = localStorage.getItem("lname");
+		
 		document.getElementById("loader").style.visibility = "visible";
 		var url = script_url+"?action=read";
+		
 		
 		
 
